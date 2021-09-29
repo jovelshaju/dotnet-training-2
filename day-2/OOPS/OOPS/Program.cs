@@ -8,7 +8,7 @@ namespace OOPS
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             Dev devObj = new Dev(30, "Rahul", "BackEnd", "Lazarus");
             devObj.Display();

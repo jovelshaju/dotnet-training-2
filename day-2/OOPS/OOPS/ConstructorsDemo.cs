@@ -58,11 +58,11 @@ namespace OOPS
     //}
 
     //Parameterised Constructor
-    class Emp
+    class ConstructorsDemo
     {
         int eid;
         string ename;
-        public Emp(int id, string name)
+        public ConstructorsDemo(int id, string name)
         {
             Console.WriteLine("-----Emp Constructor------");
             eid = id;
@@ -82,7 +82,7 @@ namespace OOPS
         }
     }
 
-    class Dev : Emp
+    class Dev : ConstructorsDemo
     {
         string domain;
         string projects;
@@ -107,6 +107,58 @@ namespace OOPS
             Console.WriteLine("Domain: " + domain);
             Console.WriteLine("Projects: " + projects);
         }
+    }
+
+    public class Customers{
+
+        private int cid;
+        private string cname;
+        private string ccity;
+        private readonly double cODLimit;
+        private static double tax = 3.54;
+        public Customers()
+        {
+            cid = 101;
+            cname = "John";
+            ccity = "Lahore";
+            cODLimit = 560000.99;
+        }
+
+        public int Id
+        {
+            get { return cid; }
+            set { cid = value; }
+        }
+
+        public string Name
+        {
+            get { return cname; }
+            set { cname = value; }
+        }
+        public string City
+        {
+            get { return ccity; }
+            set { ccity = value; }
+        }
+
+        public double ODLimit
+        {
+            get { return cODLimit; }
+        }
+
+        public double Tax
+        {
+            get { return tax; }
+        }
+
+    }
+
+    class CustomerNew
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public DateTime MStartDate { get; set; }
     }
 
 }

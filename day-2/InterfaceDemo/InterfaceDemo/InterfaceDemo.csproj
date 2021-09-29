@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97BE6A79-1883-4E45-BDF1-4B7C320990FF}</ProjectGuid>
+    <ProjectGuid>{5186EA5B-C44B-454C-B532-65BA42BB6241}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>OOPS</RootNamespace>
-    <AssemblyName>OOPS</AssemblyName>
+    <RootNamespace>InterfaceDemo</RootNamespace>
+    <AssemblyName>InterfaceDemo</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConstructorsDemo.cs" />
-    <Compile Include="Excercise.cs" />
-    <Compile Include="PolyDemo.cs" />
+    <Compile Include="Interface1.cs" />
+    <Compile Include="Interface2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
