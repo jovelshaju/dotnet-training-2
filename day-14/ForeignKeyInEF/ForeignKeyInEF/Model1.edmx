@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Day14DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Depts">
+          <Key>
+            <PropertyRef Name="DId" />
+          </Key>
+          <Property Name="DId" Type="int" Nullable="false" />
+          <Property Name="DName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Emp">
+          <Key>
+            <PropertyRef Name="EId" />
+          </Key>
+          <Property Name="EId" Type="int" Nullable="false" />
+          <Property Name="EFName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ELName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EDesig" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DeptID" Type="int" />
+        </EntityType>
+        <Association Name="FK__Emp__DeptID__38996AB5">
+          <End Role="Depts" Type="Self.Depts" Multiplicity="0..1" />
+          <End Role="Emp" Type="Self.Emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depts">
+              <PropertyRef Name="DId" />
+            </Principal>
+            <Dependent Role="Emp">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Day14DBModelStoreContainer">
+          <EntitySet Name="Depts" EntityType="Self.Depts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emp" EntityType="Self.Emp" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Emp__DeptID__38996AB5" Association="Self.FK__Emp__DeptID__38996AB5">
+            <End Role="Depts" EntitySet="Depts" />
+            <End Role="Emp" EntitySet="Emp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Day14DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="DId" />
+          </Key>
+          <Property Name="DId" Type="Int32" Nullable="false" />
+          <Property Name="DName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Emps" Relationship="Self.FK__Emp__DeptID__38996AB5" FromRole="Depts" ToRole="Emp" />
+        </EntityType>
+        <EntityType Name="Emp">
+          <Key>
+            <PropertyRef Name="EId" />
+          </Key>
+          <Property Name="EId" Type="Int32" Nullable="false" />
+          <Property Name="EFName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ELName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EDesig" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeptID" Type="Int32" />
+          <NavigationProperty Name="Dept" Relationship="Self.FK__Emp__DeptID__38996AB5" FromRole="Emp" ToRole="Depts" />
+        </EntityType>
+        <Association Name="FK__Emp__DeptID__38996AB5">
+          <End Role="Depts" Type="Self.Dept" Multiplicity="0..1" />
+          <End Role="Emp" Type="Self.Emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depts">
+              <PropertyRef Name="DId" />
+            </Principal>
+            <Dependent Role="Emp">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Day14DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Depts" EntityType="Self.Dept" />
+          <EntitySet Name="Emps" EntityType="Self.Emp" />
+          <AssociationSet Name="FK__Emp__DeptID__38996AB5" Association="Self.FK__Emp__DeptID__38996AB5">
+            <End Role="Depts" EntitySet="Depts" />
+            <End Role="Emp" EntitySet="Emps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Day14DBModelStoreContainer" CdmEntityContainer="Day14DBEntities">
+          <EntitySetMapping Name="Depts">
+            <EntityTypeMapping TypeName="Day14DBModel.Dept">
+              <MappingFragment StoreEntitySet="Depts">
+                <ScalarProperty Name="DId" ColumnName="DId" />
+                <ScalarProperty Name="DName" ColumnName="DName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emps">
+            <EntityTypeMapping TypeName="Day14DBModel.Emp">
+              <MappingFragment StoreEntitySet="Emp">
+                <ScalarProperty Name="EId" ColumnName="EId" />
+                <ScalarProperty Name="EFName" ColumnName="EFName" />
+                <ScalarProperty Name="ELName" ColumnName="ELName" />
+                <ScalarProperty Name="EDesig" ColumnName="EDesig" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

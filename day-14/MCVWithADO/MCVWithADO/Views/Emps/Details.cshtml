@@ -1,0 +1,50 @@
+﻿@model MCVWithADO.Models.Emp
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Emp</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EFName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ELName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ELName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDesig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDesig)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dept.DName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dept.DName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

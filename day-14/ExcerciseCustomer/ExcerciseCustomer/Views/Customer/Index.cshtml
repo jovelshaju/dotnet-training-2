@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ExcerciseCustomer.Models.Customer>
+
+@{
+    ViewBag.Title = "Display";
+}
+
+<h2>List of Customers</h2>
+
+<ol>
+    @foreach (var item in Model)
+    {
+        <li>
+            <ul>
+                <li>
+                    ID: @Html.DisplayFor(modelItem => item.CId)
+                </li>
+                <li>
+                    Name: @Html.DisplayFor(modelItem => item.CName)
+                </li>
+                <li>
+                    E-Mail: @Html.DisplayFor(modelItem => item.CEmail)
+                </li>
+                <li>
+                    OverDraft Limit: @Html.DisplayFor(modelItem => item.OverDraftLimit)
+                </li>
+            </ul>
+            <br />
+            
+        </li>
+    }
+    </ol>
+
+
+
+

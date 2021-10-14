@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignKeyInEF", "ForeignKeyInEF\ForeignKeyInEF.csproj", "{B9021F61-50E3-4FD9-9E98-A4EE5449AB65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9021F61-50E3-4FD9-9E98-A4EE5449AB65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9021F61-50E3-4FD9-9E98-A4EE5449AB65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9021F61-50E3-4FD9-9E98-A4EE5449AB65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9021F61-50E3-4FD9-9E98-A4EE5449AB65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3A12C6F-734B-40C4-BBBD-47A113BC60E9}
+	EndGlobalSection
+EndGlobal
