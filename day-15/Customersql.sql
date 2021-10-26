@@ -6,6 +6,7 @@ collate SQL_Latin1_General_CP1_CI_AS
 
 use Day15DB
 
+drop table Customers
 create table Customers
 (CId int primary key,
 CName nvarchar(20) not null,

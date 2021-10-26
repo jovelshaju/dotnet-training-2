@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Day18DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Fee">
+          <Key>
+            <PropertyRef Name="SId" />
+            <PropertyRef Name="SMonth" />
+            <PropertyRef Name="SYear" />
+          </Key>
+          <Property Name="SId" Type="int" Nullable="false" />
+          <Property Name="SFee" Type="float" />
+          <Property Name="SMonth" Type="int" Nullable="false" />
+          <Property Name="SYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="SId" />
+          </Key>
+          <Property Name="SId" Type="int" Nullable="false" />
+          <Property Name="SName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SEmail" Type="nvarchar" MaxLength="20" />
+          <Property Name="SContact" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Fee__SId__4BAC3F29">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Fee" Type="Self.Fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="Fee">
+              <PropertyRef Name="SId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Day18DBModelStoreContainer">
+          <EntitySet Name="Fee" EntityType="Self.Fee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Fee__SId__4BAC3F29" Association="Self.FK__Fee__SId__4BAC3F29">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Fee" EntitySet="Fee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Day18DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Fee">
+          <Key>
+            <PropertyRef Name="SId" />
+            <PropertyRef Name="SMonth" />
+            <PropertyRef Name="SYear" />
+          </Key>
+          <Property Name="SId" Type="Int32" Nullable="false" />
+          <Property Name="SFee" Type="Double" />
+          <Property Name="SMonth" Type="Int32" Nullable="false" />
+          <Property Name="SYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Fee__SId__4BAC3F29" FromRole="Fee" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="SId" />
+          </Key>
+          <Property Name="SId" Type="Int32" Nullable="false" />
+          <Property Name="SName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SEmail" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SContact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Fees" Relationship="Self.FK__Fee__SId__4BAC3F29" FromRole="Student" ToRole="Fee" />
+        </EntityType>
+        <Association Name="FK__Fee__SId__4BAC3F29">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Fee" Type="Self.Fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="Fee">
+              <PropertyRef Name="SId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Day18DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Fees" EntityType="Self.Fee" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <AssociationSet Name="FK__Fee__SId__4BAC3F29" Association="Self.FK__Fee__SId__4BAC3F29">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Fee" EntitySet="Fees" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Day18DBModelStoreContainer" CdmEntityContainer="Day18DBEntities">
+          <EntitySetMapping Name="Fees">
+            <EntityTypeMapping TypeName="Day18DBModel.Fee">
+              <MappingFragment StoreEntitySet="Fee">
+                <ScalarProperty Name="SId" ColumnName="SId" />
+                <ScalarProperty Name="SFee" ColumnName="SFee" />
+                <ScalarProperty Name="SMonth" ColumnName="SMonth" />
+                <ScalarProperty Name="SYear" ColumnName="SYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="Day18DBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="SId" ColumnName="SId" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="SEmail" ColumnName="SEmail" />
+                <ScalarProperty Name="SContact" ColumnName="SContact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

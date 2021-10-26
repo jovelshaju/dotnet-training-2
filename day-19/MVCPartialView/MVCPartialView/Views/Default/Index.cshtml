@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Default Index</h2>
+<div>
+    <h3>First Method</h3>
+    @Html.Partial("OurPview")
+    <h3>Second Method</h3>
+    @{Html.RenderPartial("OurPview");
+    }
+    <h3>Third Method</h3>
+    @{Html.RenderAction("Pview");
+    }
+    <h3>Fourth Method</h3>
+    @Html.Action("Pview")
+    
+
+</div>
+
